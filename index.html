@@ -4,72 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEG Shop</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #6a6a6a;
-        }
-        header {
-            background-color: #750092;
-            color: rgb(255, 255, 255);
-            padding: 15px;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-        }
-        nav a {
-            color: rgb(255, 252, 252);
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-        }
-        nav a:hover {
-            background-color: #b300ff51;
-            color: rgb(255, 255, 255);
-        }
-        section {
-            padding: 20px;
-        }
-        footer {
-            background-color: #000000;
-            color: rgb(246, 246, 246);
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header>
-    <h1>bienvenue sur AEG Shop</h1>
+    <h1>Bienvenue sur AEG Shop</h1>
 </header>
 
 <nav>
-    <a href="file:///C:/Users/goulc/Desktop/projet%20AEG%20Shop/Untitled-1.html#">Accueil</a>
-    <a href="a propos.html">À propos</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
-    <a href="https://discord.gg/VpUfP2raSc">discord de AEG Shop</a>
-</a>
+    <a href="index.html">Accueil</a>
+    <a href="a_propos.html">À propos</a>
+    <a href="services.html">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="https://discord.gg/VpUfP2raSc">Discord de AEG Shop</a>
 </nav>
 
-<section>
-    <h2>bienvenue sur le site de AEG Shop</h2>
-    <p></p>
-    <p></p>
+<section id="hero">
+    <h2>Découvrez nos services</h2>
+    <p>Plugins Minecraft, serveurs Discord, et bien plus encore !</p>
+    <a href="#services" class="cta-button">Explorez nos services</a>
+</section>
+
+<section id="services">
+    <h2>Nos Services</h2>
+    <div class="service-item">
+        <h3>Plugins Minecraft</h3>
+        <p>Découvrez notre sélection de plugins pour améliorer votre serveur Minecraft.</p>
+        <a href="#" class="cta-button">En savoir plus</a>
+    </div>
+    <div class="service-item">
+        <h3>Serveurs Discord</h3>
+        <p>Des serveurs Discord personnalisés pour votre communauté.</p>
+        <a href="#" class="cta-button">En savoir plus</a>
+    </div>
+    <div class="service-item">
+        <h3>Sites Web</h3>
+        <p>Création de sites web modernes et adaptés à vos besoins.</p>
+        <a href="#" class="cta-button">En savoir plus</a>
+    </div>
+</section>
+
+<section id="testimonials">
+    <h2>Ce que disent nos clients</h2>
+    <div id="avis-container"></div>
+</section>
+
+<section id="contact">
+    <h2>Contactez-nous</h2>
+    <form id="contactForm">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
 </section>
 
 <footer>
     <p>&copy; 2024 AEG Shop - Tous droits réservés</p>
 </footer>
+
+<script>
+    // Récupérer les avis depuis l'API
+    fetch('http://localhost:5000/api/avis')
+        .then(response => response.json())
+        .then(data => {
+            const avisContainer = document.getElementById('avis-container');
+            avisContainer.innerHTML = '';
+            data.forEach(avis => {
+                avisContainer.innerHTML += `
+                    <div class="testimonial-item">
+                        <p>"${avis.avis}"</p>
+                        <span>- ${avis.nom}</span>
+                    </div>
+                `;
+            });
+        });
+
+    // Soumettre le formulaire de contact
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = {
+            nom: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        };
+
+        fetch('http://localhost:5000/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('Message envoyé avec succès!');
+            document.getElementById('contactForm').reset();
+        })
+        .catch(error => {
+            alert('Erreur lors de l\'envoi du message.');
+        });
+    });
+</script>
 
 </body>
 </html>
