@@ -1,117 +1,39 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AEG Shop</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>AEG shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
-<header>
-    <h1>Bienvenue sur AEG Shop</h1>
-</header>
+    <header>
+        <a href="#" class="logo">
+            <h1>AEG Shop</h1>
 
-<nav>
-    <a href="index.html">Accueil</a>
-    <a href="a_propos.html">À propos</a>
-    <a href="services.html">Services</a>
-    <a href="#contact">Contact</a>
-    <a href="https://discord.gg/VpUfP2raSc">Discord de AEG Shop</a>
-</nav>
+        </a>
 
-<section id="hero">
-    <h2>Découvrez nos services</h2>
-    <p>Plugins Minecraft, serveurs Discord, et bien plus encore !</p>
-    <a href="#services" class="cta-button">Explorez nos services</a>
-</section>
+        <ul class="navlist">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Membership</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Contact</a></li>
 
-<section id="services">
-    <h2>Nos Services</h2>
-    <div class="service-item">
-        <h3>Plugins Minecraft</h3>
-        <p>Découvrez notre sélection de plugins pour améliorer votre serveur Minecraft.</p>
-        <a href="#" class="cta-button">En savoir plus</a>
-    </div>
-    <div class="service-item">
-        <h3>Serveurs Discord</h3>
-        <p>Des serveurs Discord personnalisés pour votre communauté.</p>
-        <a href="#" class="cta-button">En savoir plus</a>
-    </div>
-    <div class="service-item">
-        <h3>Sites Web</h3>
-        <p>Création de sites web modernes et adaptés à vos besoins.</p>
-        <a href="#" class="cta-button">En savoir plus</a>
-    </div>
-</section>
+        </ul>
 
-<section id="testimonials">
-    <h2>Ce que disent nos clients</h2>
-    <div id="avis-container"></div>
-</section>
+        <div class="right-content">
+            <a href="#" class="nav-btn">Sign In</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
 
-<section id="contact">
-    <h2>Contactez-nous</h2>
-    <form id="contactForm">
-        <label for="name">Nom :</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" required>
-        <label for="message">Message :</label>
-        <textarea id="message" name="message" required></textarea>
-        <button type="submit">Envoyer</button>
-    </form>
-</section>
-
-<footer>
-    <p>&copy; 2024 AEG Shop - Tous droits réservés</p>
-</footer>
-
-<script>
-    // Récupérer les avis depuis l'API
-    fetch('http://localhost:5000/api/avis')
-        .then(response => response.json())
-        .then(data => {
-            const avisContainer = document.getElementById('avis-container');
-            avisContainer.innerHTML = '';
-            data.forEach(avis => {
-                avisContainer.innerHTML += `
-                    <div class="testimonial-item">
-                        <p>"${avis.avis}"</p>
-                        <span>- ${avis.nom}</span>
-                    </div>
-                `;
-            });
-        });
-
-    // Soumettre le formulaire de contact
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const formData = {
-            nom: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            message: document.getElementById('message').value
-        };
-
-        fetch('http://localhost:5000/api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert('Message envoyé avec succès!');
-            document.getElementById('contactForm').reset();
-        })
-        .catch(error => {
-            alert('Erreur lors de l\'envoi du message.');
-        });
-    });
-</script>
-
+    <script src="js/script.js"></script>
 </body>
 </html>
