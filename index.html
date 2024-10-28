@@ -3,37 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AEG shop</title>
+    <title>AEG Shop</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <header>
         <a href="#" class="logo">
             <h1>AEG Shop</h1>
-
         </a>
-
         <ul class="navlist">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Membership</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Contact</a></li>
-
+            <li><a href="#about">About</a></li>
+            <li><a href="#membership">Membership</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-
         <div class="right-content">
-            <a href="#" class="nav-btn">Sign In</a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
 
+    <!-- Section Services -->
+    <section class="services" id="services">
+        <h2>Nos Services</h2>
+        <div class="card-container">
+            <div class="card">
+                <i class="ri-code-box-line"></i>
+                <h3>Plugins Minecraft</h3>
+                <p>Développement sur mesure de plugins pour enrichir vos serveurs Minecraft.</p>
+            </div>
+            <div class="card">
+                <i class="ri-robot-line"></i>
+                <h3>Bots Discord</h3>
+                <p>Création de bots Discord personnalisés pour automatiser et animer vos serveurs.</p>
+            </div>
+            <div class="card">
+                <i class="ri-server-line"></i>
+                <h3>Serveurs Discord</h3>
+                <p>Configuration et gestion de serveurs Discord pour vos communautés.</p>
+            </div>
+            <div class="card">
+                <i class="ri-computer-line"></i>
+                <h3>Sites Internet</h3>
+                <p>Développement de sites web modernes et adaptés à vos besoins.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Membership -->
+    <section class="membership" id="membership">
+        <h2>Membre de notres équipe</h2>
+        <p>Voici notre équipe !</p>
+        <div class="team-container">
+            <div class="member-card">
+                <img src="membre/astra.png" alt="Membre 1">
+                <h3>Astra</h3>
+                <p>Développeur spécialisé en bots Discord.et developpement de plugins minecraft</p>
+            </div>
+            <div class="member-card">
+                <img src="membre/enzo.png" alt="Membre 2">
+                <h3>Enzo</h3>
+                <p>Expert en Creation de serveur discord</p>
+            </div>
+            <div class="member-card">
+                <img src="membre/goulcraft.png" alt="Membre 3">
+                <h3>Goulcraft</h3>
+                <p>Debutant en creation de site</p>
+            </div>
+            <div class="member-card">
+                <img src="membre/notime.png" alt="Membre 4">
+                <h3>.ｼ</h3>
+                <p>Expert en graphisme</p>
+            </div>
+            <!-- Ajoutez d'autres cartes de membres ici -->
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="contact" id="contact">
+        <h2>Contact</h2>
+        <p>Vous avez des questions ? N’hésitez pas à nous contacter !</p>
+        <form action="#">
+            <input type="text" placeholder="Votre nom" required>
+            <input type="email" placeholder="Votre email" required>
+            <textarea placeholder="Votre message" required></textarea>
+            <button type="submit" class="cta-button">Envoyer</button>
+        </form>
+    </section>
+
+    <div class="loader" id="loader"></div>
     <script src="js/script.js"></script>
 </body>
 </html>
